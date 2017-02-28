@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
 
 	public float speed = 15.0f;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 		xmin = leftmost.x + padding;
 		xmax = rightmost.x - padding;
 	}
-	
+
 	void Update ()
 	{
 		if (Input.GetKey(KeyCode.LeftArrow))

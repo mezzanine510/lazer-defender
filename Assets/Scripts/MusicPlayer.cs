@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour {
 	static MusicPlayer instance = null;
-	
+
 	void Start () {
 		if (instance != null && instance != this) {
 			Destroy (gameObject);
@@ -12,6 +12,6 @@ public class MusicPlayer : MonoBehaviour {
 			instance = this;
 			GameObject.DontDestroyOnLoad(gameObject);
 		}
-		
+
 	}
 }
