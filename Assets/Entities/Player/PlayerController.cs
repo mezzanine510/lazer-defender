@@ -12,11 +12,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
 	{
-		float distance = transform.position.z - Camera.main.transform.position.z;
-		Vector3 leftmost = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance));
-		Vector3 rightmost = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance));
-		xmin = leftmost.x + padding;
-		xmax = rightmost.x - padding;
+		UnitBoundaries();
 	}
 
 	void Update ()
@@ -37,5 +33,15 @@ public class PlayerController : MonoBehaviour
 		float xClamp = Mathf.Clamp(transform.position.x, xmin, xmax);
 		transform.position = new Vector3(xClamp, transform.position.y, transform.position.z);
 	}
+
+	void UnitBoundaries()
+	{
+		float distance = transform.position.z - Camera.main.transform.position.z;
+		Vector3 leftmost = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance));
+		Vector3 rightmost = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance));
+		xmin = leftmost.x + padding;
+		xmax = rightmost.x - padding;
+	}
+
 
 }
