@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 
 	public float speed = 15.0f;
 	public float padding = 1.0f;
+	public GameObject projectile;
+	public float projectileSpeed;
+	public float firingRate;
 
 	float xmin;
 	float xmax;
@@ -17,6 +20,16 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			InvokeRepeating("Fire", 0.0f, firingRate);
+		}
+
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+			CancelInvoke("Fire");
+		}
+
 		if (Input.GetKey(KeyCode.LeftArrow))
 		{
 			//transform.position += new Vector3(-speed * Time.deltaTime, 0, 0);
@@ -43,5 +56,11 @@ public class PlayerController : MonoBehaviour
 		xmax = rightmost.x - padding;
 	}
 
+	// Instantiates beam projectile as a GameObject (instead of a regular default object instantiation) and launches it at a certain velocity.
+	void Fire()
+	{
+		GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0,projectileSpeed);
+	}
 
 }

@@ -13,11 +13,6 @@ public class EnemySpawner : MonoBehaviour {
 	private float xmin;
 	private float xmax;
 
-	void Awake()
-	{
-
-	}
-
 	// Use this for initialization
 	void Start ()
 	{
