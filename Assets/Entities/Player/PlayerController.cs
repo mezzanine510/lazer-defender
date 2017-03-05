@@ -63,4 +63,5 @@ public class PlayerController : MonoBehaviour
 		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0,projectileSpeed);
 	}
 
+
 }

@@ -57,7 +57,6 @@ public class EnemySpawner : MonoBehaviour {
 			movingRight = false;
 		}
 
-
 	}
 
 }
