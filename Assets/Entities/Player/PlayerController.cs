@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject projectile;
 	public float projectileSpeed;
 	public float firingRate;
+	public float health = 500f;
 
 	float xmin;
 	float xmax;
@@ -63,5 +64,18 @@ public class PlayerController : MonoBehaviour
 		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0,projectileSpeed);
 	}
 
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("enemyLazer"))
+		{
+			EnemyProjectile enemyMissile = col.gameObject.GetComponent<EnemyProjectile>();
+			health -= enemyMissile.EnemyDamage();
+			enemyMissile.EnemyHit();
+			if (health <= 0)
+			{
+				Destroy(gameObject);
+			}
+		}
+	}
 
 }

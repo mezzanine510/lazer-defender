@@ -5,6 +5,18 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour {
 
 	public float health = 200f;
+	public GameObject enemyProjectile;
+	public float enemyProjectileSpeed = 10f;
+	public float enemyFiringRate = 0.5f;
+
+	void Update()
+	{
+		float probability = Time.deltaTime * enemyFiringRate;
+		if (Random.value < probability)
+		{
+			EnemyFire();
+		}
+	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
@@ -19,10 +31,16 @@ public class EnemyBehavior : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
-		else
-		{
-			Debug.Log("You got hit by a " + col.gameObject.name + "!");
-		}
 
 	}
+
+	void EnemyFire()
+	{
+		Vector3 startPosition = transform.position + new Vector3(0, -0.5f, 0);
+		GameObject enemyLazer = Instantiate(enemyProjectile, startPosition, Quaternion.identity) as GameObject;
+		enemyLazer.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -enemyProjectileSpeed);
+	}
+
+
+
 }
