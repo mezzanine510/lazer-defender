@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50643402550944062}
   - component: {fileID: 61093647183478992}
   - component: {fileID: 114969258820655856}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyLazer
   m_TagString: enemyLazer
   m_Icon: {fileID: 0}
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0c42a5840e69f4dabd623da65e3f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 100
 --- !u!212 &212700037433467138
 SpriteRenderer:
   m_ObjectHideFlags: 1

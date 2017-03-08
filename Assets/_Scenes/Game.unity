@@ -418,6 +418,7 @@ MonoBehaviour:
   width: 12
   height: 5
   speed: 5
+  spawnDelay: 0.5
 --- !u!1001 &675664171
 Prefab:
   m_ObjectHideFlags: 0
