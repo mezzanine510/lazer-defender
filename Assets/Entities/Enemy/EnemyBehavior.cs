@@ -8,6 +8,14 @@ public class EnemyBehavior : MonoBehaviour {
 	public GameObject enemyProjectile;
 	public float enemyProjectileSpeed = 10f;
 	public float enemyFiringRate = 0.5f;
+	public int scoreValue = 150;
+
+	private ScoreKeeper scoreKeeper;
+
+	void Start()
+	{
+		scoreKeeper = GameObject.FindObjectOfType<ScoreKeeper>();
+	}
 
 	void Update()
 	{
@@ -29,6 +37,7 @@ public class EnemyBehavior : MonoBehaviour {
 			if (health <= 0)
 			{
 				Destroy(gameObject);
+				scoreKeeper.Score(scoreValue);
 			}
 		}
 
