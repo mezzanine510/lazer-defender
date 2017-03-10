@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
 	public GameObject projectile;
 	public float projectileSpeed;
 	public float firingRate;
-	public float health = 500f;
+	public float health = 500.0f;
 	public AudioClip fireSound;
+
+	private float nextFire = 0.0f;
 
 	float xmin;
 	float xmax;
@@ -22,9 +24,15 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextFire)
 		{
 			InvokeRepeating("Fire", 0.0f, firingRate);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space) && Time.time < nextFire)
+		{
+			float fireDelay = nextFire - Time.time;
+			InvokeRepeating("Fire", fireDelay, firingRate);
 		}
 
 		if (Input.GetKeyUp(KeyCode.Space))
@@ -61,6 +69,8 @@ public class PlayerController : MonoBehaviour
 	// Instantiates beam projectile as a GameObject (instead of a regular default object instantiation) and launches it at a certain velocity.
 	void Fire()
 	{
+	// nextFire is referenced in Update() in order to stop the player from firing faster than intended by pressing the spacebar down repeatedly and rapidly.
+		nextFire = Time.time + firingRate;
 		GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
 		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0,projectileSpeed);
 		AudioSource.PlayClipAtPoint(fireSound, transform.position);
@@ -75,9 +85,21 @@ public class PlayerController : MonoBehaviour
 			enemyMissile.EnemyHit();
 			if (health <= 0)
 			{
-				Destroy(gameObject);
+				LoadWinScreen();
+				Die();
 			}
 		}
+	}
+
+	void Die()
+	{
+		Destroy(gameObject);
+	}
+
+	void LoadWinScreen()
+	{
+		LevelManager levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+		levelManager.LoadLevel("Win Screen");
 	}
 
 }

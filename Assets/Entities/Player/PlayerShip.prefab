@@ -103,7 +103,7 @@ MonoBehaviour:
   padding: 1
   projectile: {fileID: 1815067124686564, guid: 01d4950e48c49cf47837007de8c28a62, type: 2}
   projectileSpeed: 6
-  firingRate: 0.3
+  firingRate: 0.25
   health: 500
   fireSound: {fileID: 8300000, guid: 48e2222db05756842a786d161d0fad60, type: 3}
 --- !u!212 &212909488542415958
@@ -135,7 +135,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -53157785
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ebfc2bb01348e0d4282bc3f621e1e5d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

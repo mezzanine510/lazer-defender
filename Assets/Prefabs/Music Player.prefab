@@ -121,6 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de01848f3a22f4c029498cef005440ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startClip: {fileID: 8300000, guid: 56cd754b35bbd39479a7d417da631734, type: 3}
+  gameClip: {fileID: 8300000, guid: 423b2c3023399dc47af26075e449d9e0, type: 3}
+  endClip: {fileID: 8300000, guid: 56cd754b35bbd39479a7d417da631734, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
