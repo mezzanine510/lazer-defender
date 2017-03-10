@@ -105,6 +105,7 @@ MonoBehaviour:
   projectileSpeed: 6
   firingRate: 0.3
   health: 500
+  fireSound: {fileID: 8300000, guid: 48e2222db05756842a786d161d0fad60, type: 3}
 --- !u!212 &212909488542415958
 SpriteRenderer:
   m_ObjectHideFlags: 1

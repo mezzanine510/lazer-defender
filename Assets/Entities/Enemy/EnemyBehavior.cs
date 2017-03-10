@@ -9,12 +9,15 @@ public class EnemyBehavior : MonoBehaviour {
 	public float enemyProjectileSpeed = 10f;
 	public float enemyFiringRate = 0.5f;
 	public int scoreValue = 150;
+	public AudioClip enemyFireSound;
+	public AudioClip enemyDeathSound;
+
 
 	private ScoreKeeper scoreKeeper;
 
 	void Start()
 	{
-		scoreKeeper = GameObject.FindObjectOfType<ScoreKeeper>();
+		scoreKeeper = Object.FindObjectOfType<ScoreKeeper>();
 	}
 
 	void Update()
@@ -36,8 +39,9 @@ public class EnemyBehavior : MonoBehaviour {
 
 			if (health <= 0)
 			{
-				Destroy(gameObject);
+				AudioSource.PlayClipAtPoint(enemyDeathSound, transform.position);
 				scoreKeeper.Score(scoreValue);
+				Destroy(gameObject);
 			}
 		}
 
@@ -48,6 +52,7 @@ public class EnemyBehavior : MonoBehaviour {
 		Vector3 startPosition = transform.position + new Vector3(0, -0.5f, 0);
 		GameObject enemyLazer = Instantiate(enemyProjectile, startPosition, Quaternion.identity) as GameObject;
 		enemyLazer.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -enemyProjectileSpeed);
+		AudioSource.PlayClipAtPoint(enemyFireSound, transform.position);
 	}
 
 

@@ -111,6 +111,9 @@ MonoBehaviour:
     type: 2}
   enemyProjectileSpeed: 5
   enemyFiringRate: 0.5
+  scoreValue: 150
+  enemyFireSound: {fileID: 8300000, guid: f60a0a71828597f49b3aed70f4458ccb, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 44e0f70f50e9bc749931ddca9c2dfe01, type: 3}
 --- !u!212 &212630729099307576
 SpriteRenderer:
   m_ObjectHideFlags: 1
